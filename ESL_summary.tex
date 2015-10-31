@@ -1,0 +1,62 @@
+\documentclass[9pt]{extarticle}
+
+\usepackage{multicol}
+\usepackage{amssymb}
+\usepackage[margin=0.2in]{geometry}
+\setlength{\topskip}{0mm}
+\setlength{\parindent}{0pt}
+%opening
+\title{The Elements of Statistical Learning, Summary}
+
+\date{}
+
+
+\begin{document}
+
+\maketitle
+\vspace{-15ex}
+\begin{multicols*}{2}
+
+\newcommand\E{\mathbb{E}}
+\newcommand\Proba{\mathbb{P}}
+\newcommand{\nl}{\newline}
+\newcommand{\N}{\mathcal{N}}
+
+\section*{2 Overview of Supervised Learning}
+%Least Squares method: find $\beta$ to minimize "Residual Sum of Square"\newline
+%$RSS(\beta)=\sum_{i=1}^N (y_i-x_i^T \beta)=(y-X\beta)^T (y-X\beta)$\newline
+%By differentiating, we get: $\hat{\beta}=(X^T X)^{-1}X^T y$
+
+\subsection*{framework}
+
+$X \in \mathbb{R}^p$ : Random vector input\nl
+$Y \in \mathbb{R}$ : Random variable to predict\nl
+$f(X)$: function we seek to predict $Y$\nl
+$L(Y,f(X))$: \textit{Loss function} to penalize error in prediction\nl
+$EPE(f)=\E[L(Y,f(X))]$: Expected Prediction Error\nl
+\emph{Square error loss} (or \emph{$L_2$ $loss function$}): $L(Y,f(X))=(Y-f(X))^2$\nl
+In this case, the sol is $f(x)=\E[Y|X=x]$: \emph{regression function}\nl
+\emph{Curse of dimension}: if $p\uparrow$, local methods fail because density $O(N^{1/p})$\nl
+\emph{Mean Squared Error} of the estimator $\hat{f}$ at $x_0$:
+$MSE(\hat{y}_0):=\E_{\tau}[(y_0-\hat{y}_0)^2]$\nl
+$\tau$ (training set) is random, so is $\hat{y}_0:=\hat{f}(x_0)$. True $y_0:=f(x_0)$ is fixed\nl
+\emph{bias-variance decomposition}: $MSE(\hat{y}_0)=Var_{\tau}(\hat{y}_0)+Bias(\hat{y}_0)^2$\nl
+\emph{Additive error} model : $Y=f(X)+\epsilon$ with $\E[\epsilon]=0$ and $X\perp \epsilon$\nl
+We model $f$ with parameters $\theta$ and try to determine $f_{\theta}$\nl
+In \emph{least squares} method, $\theta$ chosen to minimize \emph{Residual Sum of Squares}\nl
+$RSS(\theta):=\sum_{i=1}^{N}(y_i-f_{\theta}(x_i))^2$\nl
+\emph{Maximum likelihood estimation}: maximize $\Proba$ to have those observations\nl
+$\theta=argmax_{\theta} L(\theta):=\sum_{i=1}^{N}\log \Proba_{\theta}(Y=y_i|X=x_i)$\nl
+Least square=Max likelihood if $Y=f_{\theta}(X)+\epsilon$ with $\theta \backsim \N(0,\sigma^2)$\nl
+\emph{Penalized} RSS: $PRSS(f,\lambda):=RSS(f)+\lambda J(f)$, $J$ \emph{roughness penalty}\nl
+If output is a categorical variable $G \in \mathcal{G}$, $L$ is a $card(\mathcal{G})$-square matrix\nl
+\textit{zero-one} loss function: $L(G,\hat{G}(X))=1_{G=\hat{G}(X)}$:  ($f$ noted $\hat{G}$)\nl
+In this case, $\hat{G}(x)=argmax_{g \in \mathcal{G}} \Proba(G=g|X=x)$, called \textit{bayes classifier}
+
+
+
+\section{3 Linear Methods for Regression}
+
+
+\end{multicols*}
+\end{document}
