@@ -46,7 +46,7 @@ In \emph{least squares} method, $\theta$ chosen to minimize \emph{Residual Sum o
 $RSS(\theta):=\sum_{i=1}^{N}(y_i-f_{\theta}(x_i))^2$\nl
 \emph{Maximum likelihood estimation}: maximize $\Proba$ to have those observations\nl
 $\theta=argmax_{\theta} L(\theta):=\sum_{i=1}^{N}\log \Proba_{\theta}(Y=y_i|X=x_i)$\nl
-Least square=Max likelihood if $Y=f_{\theta}(X)+\epsilon$ with $\theta \backsim \N(0,\sigma^2)$\nl
+Least square=Max likelihood if $Y=f_{\theta}(X)+\epsilon$ with $\epsilon \backsim \N(0,\sigma^2)$\nl
 \emph{Penalized} RSS: $PRSS(f,\lambda):=RSS(f)+\lambda J(f)$, $J$ \emph{roughness penalty}\nl
 If output is a categorical variable $G \in \mathcal{G}$, $L$ is a $card(\mathcal{G})$-square matrix\nl
 \textit{zero-one} loss function: $L(G,\hat{G}(X))=1_{G=\hat{G}(X)}$:  ($f$ noted $\hat{G}$)\nl
@@ -61,8 +61,9 @@ In this case, $\hat{G}(x)=argmax_{g \in \mathcal{G}} \Proba(G=g|X=x)$, called \t
 $f(X)=\beta_0+\sum_{j=1}^{p}X_j \beta_j$\nl
 $RSS(\beta)=\sum_{i=1}^{N}(y_i-(\beta_0+\sum_{j=1}^{p}X_j \beta_j))^2=(y-X\beta)^T(y-X\beta)$\nl
 it's convex, solving $\frac{\partial RSS}{\partial \beta}=0$, we get $\hat{\beta}=(X^TX)^{-1}X^Ty$\nl
-$X$ generate a p-dim subspace of $\R^N$, $\hat{y}=X\hat{\beta}$ is the $\perp$-projection of $y$
-
+$X$ generate a p-dim subspace of $\R^N$, $\hat{y}=X\hat{\beta}$ is the $\perp$-projection of $y$\nl
+If true model is $Y=X\beta + \epsilon$ with $\epsilon \backsim \N(0,\sigma^2)$:
+$\hat{\beta} \backsim \N(\beta,(X^TX)^{-1}\sigma^2)$ ($X$ considered deterministic, randomness comes from $\epsilon$ and Y)
 
 
 \subsection*{3.3 Subset Selection}
