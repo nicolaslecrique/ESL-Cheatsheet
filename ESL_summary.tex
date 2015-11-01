@@ -19,6 +19,7 @@
 
 \newcommand\E{\mathbb{E}}
 \newcommand\Proba{\mathbb{P}}
+\newcommand\R{\mathbb{R}}
 \newcommand{\nl}{\newline}
 \newcommand{\N}{\mathcal{N}}
 
@@ -26,8 +27,6 @@
 %Least Squares method: find $\beta$ to minimize "Residual Sum of Square"\newline
 %$RSS(\beta)=\sum_{i=1}^N (y_i-x_i^T \beta)=(y-X\beta)^T (y-X\beta)$\newline
 %By differentiating, we get: $\hat{\beta}=(X^T X)^{-1}X^T y$
-
-\subsection*{framework}
 
 $X \in \mathbb{R}^p$ : Random vector input\nl
 $Y \in \mathbb{R}$ : Random variable to predict\nl
@@ -55,8 +54,18 @@ In this case, $\hat{G}(x)=argmax_{g \in \mathcal{G}} \Proba(G=g|X=x)$, called \t
 
 
 
-\section{3 Linear Methods for Regression}
+\section*{3 Linear Methods for Regression}
 
+\subsection*{3.2 Linear Regression and Least Squares}
+
+$f(X)=\beta_0+\sum_{j=1}^{p}X_j \beta_j$\nl
+$RSS(\beta)=\sum_{i=1}^{N}(y_i-(\beta_0+\sum_{j=1}^{p}X_j \beta_j))^2=(y-X\beta)^T(y-X\beta)$\nl
+it's convex, solving $\frac{\partial RSS}{\partial \beta}=0$, we get $\hat{\beta}=(X^TX)^{-1}X^Ty$\nl
+$X$ generate a p-dim subspace of $\R^N$, $\hat{y}=X\hat{\beta}$ is the $\perp$-projection of $y$
+
+
+
+\subsection*{3.3 Subset Selection}
 
 \end{multicols*}
 \end{document}
