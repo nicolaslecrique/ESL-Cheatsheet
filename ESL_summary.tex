@@ -60,13 +60,17 @@ In this case, $\hat{G}(x)=argmax_{g \in \mathcal{G}} \Proba(G=g|X=x)$, called \t
 
 $f(X)=\beta_0+\sum_{j=1}^{p}X_j \beta_j$\nl
 $RSS(\beta)=\sum_{i=1}^{N}(y_i-(\beta_0+\sum_{j=1}^{p}X_j \beta_j))^2=(y-X\beta)^T(y-X\beta)$\nl
-it's convex, solving $\frac{\partial RSS}{\partial \beta}=0$, we get $\hat{\beta}=(X^TX)^{-1}X^Ty$\nl
+it's convex, solving $\frac{\partial RSS}{\partial \beta}=0$, we get $\hat{\beta}=(X^TX)^{-1}X^Ty$ (\emph{normal eq.})\nl
 Alternatively, we note that $X$ generate a p-dim subspace of $\R^N$, so to minimize $RSS(\beta)=||y-X\beta||^2$, $\hat{y}=X\hat{\beta}$ is the $\perp$-projection of $y$\nl
 unbiased estimator of $\sigma$: $\hat{\sigma}=\frac{||y-\hat{y}||^2}{N-p-1}$\nl
 If true model is $Y=X\beta + \epsilon$ with $\epsilon \backsim \N(0,\sigma^2)$:
 $\hat{\beta} \backsim \N(\beta,(X^TX)^{-1}\sigma^2)$ ($X$ considered deterministic, randomness comes from $\epsilon$ and Y)\nl
-With some linear algebra:$(N-p-1)\hat{\sigma}^2\backsim \sigma^2 \chi^2_{N_p-1}$ and $\hat{\sigma} \perp \hat{beta}$
-
+With some linear algebra:$(N-p-1)\hat{\sigma}^2\backsim \sigma^2 \chi^2_{N_p-1}$ and $\hat{\sigma} \perp \hat{beta}$\nl
+From law of $\hat{\beta}$, we define \emph{z-score}: $z_j=\frac{\hat{\beta}_j}{\hat{\sigma}\sqrt{[(X^TX)^{-1}]_{jj}}}$\nl
+$z_j$ gives \emph{confidence interval}/\emph{hypothesis testing} (gaussian of variance 1)\nl
+To test significance of several $\beta_j$ simultaneously, we use \emph{F-test}
+\emph{Gauss-Markov th.}: least square have min variance of linear unbiased estimates\nl
+Algo to solve Least Square: we use \emph{Orthogonal decompo} (\emph{Gram-Schmidt})\nl
 
 \subsection*{3.3 Subset Selection}
 
